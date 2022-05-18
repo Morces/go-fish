@@ -26,7 +26,7 @@ class User(db.Model,UserMixin):
 
     @password.setter
     def password(self, password):
-        self.password = generate_password_hash(password)
+        self.pass_secure = generate_password_hash(password)
 
 
     def verify_password(self,password):
