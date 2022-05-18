@@ -8,7 +8,12 @@
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
+   
+    {% block css %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+    {% endblock css %}
 
+    <link rel="stylesheet" href="static/css/index.css">
 
 </head>
 <body>
@@ -16,7 +21,7 @@
         <div class="container">
 
             <a href="/" class="navbar-brand">
-                <img src="/static/img/logo.png" alt="">
+                <img src="static/img/logo.png" alt="">
             </a>
 
             
@@ -44,7 +49,7 @@
                         <a class="nav-link" href="{{url_for('main.write')}}">Write</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class='nav-link' href="#features">#features</a>
+                        <a class='nav-link' href="#features">Features</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{url_for('auth.logout')}}">Log out</a>
@@ -66,6 +71,53 @@
             </div>
         </div>
     </nav>
+    <div class="container-fluid">
+        <div class="container start">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="text-white">
+                        Get the most fun <br> weather app 
+                    </h3>
+                    <br><br>
+                    <a href="{{url_for('auth.login')}}"><button class="btn text-white" style="background-color: #2F5ED9;">Get Started</button></a>
+                </div>
+                <div class="col-md-6">
+                    <img src="static/img/phone.png" alt="" height="250" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bubbles">
+            <img class="" src="static/img/sunny.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+            <img class="" src="static/img/rainnyy.png" alt="">
+            <img class="" src="static/img/9deg.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+            <img class="" src="static/img/sunny.png" alt="">
+            <img class="" src="static/img/9deg.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+        </div>
+        <div class="report">
+            <img src="static/img/Screenshot from 2022-05-18 16-07-56.png" alt="">
+        </div>
+        <br><br>
+        <div class="container">
+            <div id="about">
+                <div class="info">
+                    <h4>Get comprehensive <br> Weather Information</h4>
+                    <br><br>
+                    Sign Up with us and get the chance to protect your <br>
+                    loved ones from any bad weather, remember, better be <br>
+                    careful than sorry!! 
+                </div>
+                <div class="combined">
+                    <img src="static/img/combined.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 
 
 
