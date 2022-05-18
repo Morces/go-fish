@@ -6,6 +6,7 @@ from .. import db,bcrypt
 import secrets,os
 from PIL import Image
 from flask_login import login_user,logout_user,login_required,current_user
+from ..email import mail_message
 
 
 
