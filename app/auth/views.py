@@ -21,6 +21,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in' , 'success')
+        
         mail_message("Welcome to go-fish","email/welcome_user",user.email,user=user)
         return redirect(url_for('auth.login'))
     
