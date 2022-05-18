@@ -4,8 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 from config import config_options
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from flask_mail import Mail
 
 bootstrap = Bootstrap()
+mail = Mail()
 db = SQLAlchemy()
 bcrypt =Bcrypt()
 login_manager=LoginManager()
@@ -24,6 +26,8 @@ def create_app(config_name):
     db.init_app(app)
     login_manager.init_app(app)
     bcrypt.init_app(app)
+    mail.init_app(app)
+
 
     # Will add the views and forms
     from .main import main as main_blueprint
