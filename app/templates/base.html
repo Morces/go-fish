@@ -4,7 +4,7 @@
     <meta charset="utf-8"> {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>Go-Fish</title>
+    <title>Go-Fish Weather app</title>
     {% endif %}
 
     <!-- Bootstrap CSS link and google font links-->
@@ -18,10 +18,12 @@
     <script src="https://use.fontawesome.com/e80d5d0d93.js"></script>
 </head>
 <body>
-    {% extends 'bootstrap/base.html'%}
+    
+    {% block content %}
     <!--  Navbar block   -->
-    {% block navbar %} {% include 'navbar.html' %} {% endblock %}
+    
+    {% include 'navbar.html' %} 
     <!-- Body block  -->
-    {% block content %} {% endblock %}
+    {% endblock %}
 </body>
 </html>
