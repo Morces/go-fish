@@ -2,18 +2,32 @@
 
 {% for city in cities %}
 <div class="row">
-  <h2> Current Weather in {{city.name}}</h2>
-  <hr>
-  <div>
-    <img src="http://openweathermap.org/img/wn/{{city.current_weather_icon}}@2x.png" alt="">
+  <div class="col-md-6 col-lg-6 col-sm-6 col-sm-6 card mb-4 current-card">
+    <div class="card-header">
+      <div class="row text-center">
+        <h4>{{city.name}}</h4>
+        <p>{{city.current_time}}</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://openweathermap.org/img/wn/{{city.current_weather_icon}}@2x.png" alt="">
+            <p>{{city.current_weather_description}}</p>
+          </div>
+          <div class="col-md-8">
+            <p class="temp-font">{{city.current_temp}} &#8451;</p>
+            <p>Feels like <span class="feels-like">{{city.current_feels_like}} &#8451;</span></p>
+          </div>
+        </div>
+        <div class="card-body">
+          <i class="bi bi-thermometer"></i>
+          <p>Feels like: {{city.current_pressure}} hPa</p>
+          <p>Pressure: {{city.current_pressure}} hPa</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p>Time in {{city.name}}: {{city.current_time}}</p>
-  <p>Current Temperature: {{city.current_temp}} &#8451;</p>
-  <p>The temperature currently feels like: {{city.current_feels_like}} &#8451;</p>
-  <p>Current pressure: {{city.current_pressure}} hPa</p>
-  <p>Current Weather: {{ city.current_weather_main}}</p>
-  <p>Weather Description: {{city.current_weather_description}}</p>
-</div>
+
+  
 {% endfor %}
 {% endmacro %}
+
 

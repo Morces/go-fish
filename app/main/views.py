@@ -6,7 +6,7 @@ from ..request import get_forecast
 # Views
 
 
-@main.route('/')
+@main.route('/home')
 def index():
     '''
     view root page function that returns the index page
@@ -27,5 +27,5 @@ def index():
     
     cities = [Kisumu, Mombasa, Malindi, Homabay, Kilifi, Lamu, Bondo, Turkana, Busia]
   
-    return render_template('index.html', title=title, cities=cities)
+    return render_template('home.html', title=title, cities=cities)
 
