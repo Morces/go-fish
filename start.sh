@@ -1,5 +1,5 @@
 export SECRET_KEY=8DH89s8ej3
-export MAIL_USERNAME=coolwriters332@gmail.com
-export MAIL_PASSWORD=shell003
+export MAIL_USERNAME=oneminutepitches@gmail.com
+export MAIL_PASSWORD=wakadinali
 
 python3 manage.py server
