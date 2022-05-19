@@ -1,4 +1,5 @@
 from flask import render_template
+from flask_login import login_required
 
 from . import main
 from ..request import get_forecast
@@ -14,6 +15,7 @@ def index():
 
 
 @main.route('/home')
+# @login_required
 def home():
     '''
     view root page function that returns the home page
