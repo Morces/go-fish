@@ -1,0 +1,2 @@
+export WEATHER_API_KEY="865b17777d7c2313fdd9e57a46e51b53"
+python manage.py server
