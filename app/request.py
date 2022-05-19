@@ -46,6 +46,25 @@ def get_forecast(lat, lon):
             current_weather_description = get_forecast_response['current']['weather'][0].get('description')
             current_weather_icon = get_forecast_response['current']['weather'][0].get('icon')
 
+            # Hourly
+            for hourly_response in get_forecast_response['hourly']:
+                hourly_timestamp = hourly_response.get('dt')
+                hourly_temp = hourly_response.get('temp')
+                hourly_feels_like= hourly_response.get('temp')
+                hourly_pressure = hourly_response.get('pressure')
+                hourly_humidity = hourly_response.get('humidity')
+                hourly_clouds = hourly_response.get('clouds')
+                hourly_visibility = hourly_response.get('visibility')
+                hourly_wind_speed = hourly_response.get('wind_speed')
+                hourly_wind_deg = hourly_response.get('wind_deg')
+                hourly_wind_gust = hourly_response.get('wind_gust')
+                hourly_weather_main = hourly_response['weather'].get('main')
+                hourly_weather_description = hourly_response['weather'].get('description')
+                hourly_weather_icon = hourly_response['weather'].get('icon')
+                hourly_pop = hourly_response.get('pop')
+                hourly_rain = hourly_response['rain'].get('1h')
+
+
             # Daily
             for response in get_forecast_response['daily']:
                 daily_timestamp = response.get('dt')
@@ -74,6 +93,10 @@ def get_forecast(lat, lon):
             daily_time = datetime.utcfromtimestamp(
                 daily_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
 
+            # Get hourly Prediction Time
+            hourly_time = datetime.utcfromtimestamp(
+                hourly_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
+
             # Get current Status
             if current_weather_main == 'Clouds' or current_weather_description == 'light rain' or current_weather_description == 'overcast clouds':
                 current_status = "go fish"
@@ -85,6 +108,13 @@ def get_forecast(lat, lon):
                 daily_status = "go fish"
             else:
                 daily_status = "Not the best weather, better do something else with your time"
+
+             # Get Daily Status
+            if hourly_weather_main == 'Clouds' or hourly_weather_description == 'light rain' or hourly_weather_description == 'overcast clouds':
+                hourly_status = "go fish"
+            else:
+                hourly_status = "Not the best weather, better do something else with your time"
+
 
 
             # City Names
@@ -115,7 +145,9 @@ def get_forecast(lat, lon):
                             current_weather_description, current_weather_icon, current_status, daily_time, daily_day_temp, daily_night_temp,
                             daily_min_temp, daily_max_temp, daily_eve_temp, daily_morn_temp, daily_pressure, daily_humidity, daily_wind_speed,
                             daily_wind_deg, daily_weather_id, daily_weather_main, daily_weather_description, daily_weather_icon, daily_clouds,
-                            daily_pop, daily_rain, daily_status)
+                            daily_pop, daily_rain, daily_status, hourly_time, hourly_temp, hourly_feels_like,
+                            hourly_pressure, hourly_humidity, hourly_clouds, hourly_visibility, hourly_wind_speed, hourly_wind_deg,
+                            hourly_wind_gust, hourly_weather_main, hourly_weather_description, hourly_weather_icon, hourly_pop, hourly_rain, hourly_status)
 
     print(name)
     return weather_object

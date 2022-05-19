@@ -48,9 +48,29 @@ class Weather:
                  daily_min_temp, daily_max_temp, daily_eve_temp, daily_morn_temp, daily_pressure,
                  daily_humidity, daily_wind_speed, daily_wind_deg, daily_weather_id,
                  daily_weather_main, daily_weather_description, daily_weather_icon,
-                 daily_clouds, daily_pop, daily_rain, daily_status):
-                 
+                 daily_clouds, daily_pop, daily_rain, daily_status, hourly_timestamp, hourly_temp, hourly_feels_like,
+                 hourly_pressure, hourly_humidity, hourly_clouds, hourly_visibility, hourly_wind_speed, hourly_wind_deg,
+                 hourly_wind_gust, hourly_weather_main, hourly_weather_description, hourly_weather_icon, hourly_pop, hourly_rain,hourly_status):
+
         self.name = name
+
+        # Hourly
+        self.hourly_timestamp = hourly_timestamp
+        self.hourly_temp = hourly_temp
+        self.hourly_feels_like= hourly_feels_like
+        self.hourly_pressure = hourly_pressure
+        self.hourly_humidity = hourly_humidity
+        self.hourly_clouds = hourly_clouds
+        self.hourly_visibility = hourly_visibility
+        self.hourly_wind_speed = hourly_wind_speed
+        self.hourly_wind_deg = hourly_wind_deg 
+        self.hourly_wind_gust = hourly_wind_gust
+        self.hourly_weather_main = hourly_weather_main
+        self.hourly_weather_description = hourly_weather_description
+        self.hourly_weather_icon = hourly_weather_icon
+        self.hourly_pop = hourly_pop
+        self.hourly_rain = hourly_rain
+        self.hourly_status = hourly_status
 
         # Current
         self.current_time = current_time
