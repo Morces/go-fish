@@ -1,6 +1,7 @@
 {% macro displayWeather(cities) %}
 
 {% for city in cities %}
+<!--Current predictions-->
 <div class="row">
   <div class="col-md-6 col-lg-6 col-sm-6 col-sm-6 card mb-4 current-card">
     <div class="card-header">
@@ -26,8 +27,6 @@
       </div>
     </div>
   </div>
-
-  
 {% endfor %}
 {% endmacro %}
 

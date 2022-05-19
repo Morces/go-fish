@@ -50,7 +50,7 @@ class Weather:
                  daily_weather_main, daily_weather_description, daily_weather_icon,
                  daily_clouds, daily_pop, daily_rain, daily_status, hourly_timestamp, hourly_temp, hourly_feels_like,
                  hourly_pressure, hourly_humidity, hourly_clouds, hourly_visibility, hourly_wind_speed, hourly_wind_deg,
-                 hourly_wind_gust, hourly_weather_main, hourly_weather_description, hourly_weather_icon, hourly_pop, hourly_rain,hourly_status):
+                 hourly_wind_gust, hourly_weather_main, hourly_weather_description, hourly_weather_icon, hourly_pop, hourly_status):
 
         self.name = name
 
@@ -69,7 +69,6 @@ class Weather:
         self.hourly_weather_description = hourly_weather_description
         self.hourly_weather_icon = hourly_weather_icon
         self.hourly_pop = hourly_pop
-        self.hourly_rain = hourly_rain
         self.hourly_status = hourly_status
 
         # Current
