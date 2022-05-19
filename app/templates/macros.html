@@ -4,10 +4,13 @@
 <div class="row">
   <h2> Current Weather in {{city.name}}</h2>
   <hr>
+  <div>
+    <img src="http://openweathermap.org/img/wn/{{city.current_weather_icon}}@2x.png" alt="">
+  </div>
   <p>Time in {{city.name}}: {{city.current_time}}</p>
-  <p>Current Temperature: {{city.current_temp}}</p>
-  <p>The temperature currently feels like: {{city.current_feels_like}}</p>
-  <p>Current pressure: {{city.current_pressure}}</p>
+  <p>Current Temperature: {{city.current_temp}} &#8451;</p>
+  <p>The temperature currently feels like: {{city.current_feels_like}} &#8451;</p>
+  <p>Current pressure: {{city.current_pressure}} hPa</p>
   <p>Current Weather: {{ city.current_weather_main}}</p>
   <p>Weather Description: {{city.current_weather_description}}</p>
 </div>
