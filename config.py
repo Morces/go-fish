@@ -6,6 +6,15 @@ class Config:
   '''
   WEATHER_API_BASE_URL='https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&exclude=minutely,hourly&lang=en&units=metric&appid={}'
   WEATHER_API_KEY=os.environ.get('WEATHER_API_KEY')
+  SECRET_KEY = '8DH89s8ej3'
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wachira:Lydiah007@localhost/gofish'
+  UPLOADED_PHOTOS_DEST ='app/static/photos'
+
+  MAIL_SERVER = 'smtp.googlemail.com'
+  MAIL_PORT = 587
+  MAIL_USE_TLS = True
+  MAIL_USERNAME = 'oneminutepitches@gmail.com'
+  MAIL_PASSWORD = 'wakadinali'
 
 class ProdConfig(Config):
   '''

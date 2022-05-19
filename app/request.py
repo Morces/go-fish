@@ -1,12 +1,10 @@
-import urllib.request
-import json
+import urllib.request, json
 from datetime import datetime
 
 from .models import Weather
 
 apiKey = None
 base_url = None
-
 
 def configure_request(app):
     global apiKey, base_url

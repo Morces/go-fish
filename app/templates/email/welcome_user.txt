@@ -1,0 +1,3 @@
+Hello {{user.username}}
+You have successfully signed up
+Welcome to Go-fish, Fishing made easier.
