@@ -89,10 +89,12 @@
     padding: 5px;
 }
 
-/* body {
-    margin: 1em;
+body {
+    margin-left: auto;
+    margin-right: auto;
     padding: 2em;
-  } */
+    align-items: center;
+  }
 
 .current-card {
     background-color: #1c57b8;

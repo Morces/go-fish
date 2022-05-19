@@ -1,9 +1,9 @@
 {% macro displayWeather(cities) %}
 
-{% for city in cities %}
 <!--Current predictions-->
 <div class="row">
-  <div class="col-md-6 col-lg-6 col-sm-6 col-sm-6 card mb-4 current-card">
+  {% for city in cities %}
+  <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 current-card mb-4">
     <div class="card-header">
       <div class="row text-center">
         <h4>{{city.name}}</h4>
@@ -27,7 +27,43 @@
       </div>
     </div>
   </div>
-{% endfor %}
+  {% endfor %}
+</div>
+
 {% endmacro %}
 
 
+{% macro displayHourlyWeather(cities) %}
+
+<!--hourly predictions-->
+<div class="row">
+  {% for city in cities %}
+  {% for hour in hours %}
+  <div class="col-md-4 col-lg-4 col-sm-6 col-sm-6 card mb-4 hourly-card">
+    <div class="card-header">
+      <div class="row text-center">
+        <h4>{{city.name}}</h4>
+        <p>{{city.hourly_time}}</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://openweathermap.org/img/wn/{{city.hourly_weather_icon}}@2x.png" alt="">
+            <p>{{city.hourly_weather_description}}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="temp-font">{{city.hourly_temp}} &#8451;</p>
+            <p>Feels like <span class="feels-like">{{city.hourly_feels_like}} &#8451;</span></p>
+          </div>
+        </div>
+        <div class="card-body">
+          <i class="bi bi-thermometer"></i>
+          <p>Feels like: {{city.hourly_pressure}} hPa</p>
+          <p>Pressure: {{city.hourly_pressure}} hPa</p>
+          <p class="temp-font">Status: {{city.hourly_status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endfor %}
+</div>
+{% endmacro %}

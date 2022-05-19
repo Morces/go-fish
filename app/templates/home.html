@@ -24,6 +24,12 @@
 
 {% block content %}
   <div class="container">
+    <h3 class="text-center">Current Weather</h3>
     {{ macro.displayWeather(cities)}}
   </div>
+  <div class="container">
+    <h3 class="text-center">Hourly Weather</h3>
+    {{ macro.displayWeather(cities)}}
+  </div>
+
 {% endblock %}
