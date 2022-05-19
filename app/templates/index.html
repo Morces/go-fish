@@ -3,9 +3,7 @@
 
 
 {% block content %}
-<body>
-  <h5>{{city_name}}</h5>
-    {{ macro.displayCurrentCityWeather(current_cities)}}
+  <div class="container">
+    {{ macro.displayWeather(cities)}}
   </div>
-</body>
 {% endblock %}

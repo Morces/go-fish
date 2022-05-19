@@ -17,7 +17,7 @@ def index():
     
     Kisumu = get_forecast(-0.1022, 34.7617)
     Mombasa = get_forecast(-4.0547, 39.6636)
-    Malindi = get_forecast( -3.2175, 40.1191)
+    Malindi = get_forecast(-3.2175, 40.1191)
     Homabay = get_forecast(-0.5273, 34.4571)
     Kilifi = get_forecast(-3.6305, 39.8499)
     Lamu = get_forecast(-2.2717, 40.902)
