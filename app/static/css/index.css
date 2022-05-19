@@ -73,3 +73,12 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.show {
+    display: flex;
+}
+  
+.one {
+    flex: 25%;
+    padding: 5px;
+}
