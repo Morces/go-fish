@@ -1,12 +1,6 @@
 .start {
     background-color: #7A9CF3;
 }
-
-
-
-
-
-
 .bubbles img {
     width: 50px;
     animation: bubble 7s linear infinite;
