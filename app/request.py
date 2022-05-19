@@ -8,8 +8,10 @@ base_url = None
 
 def configure_request(app):
     global apiKey, base_url
+
     apiKey = app.config['WEATHER_API_KEY']
     base_url = app.config['WEATHER_API_BASE_URL']
+ 
 
 
 def get_forecast(lat, lon):

@@ -4,12 +4,19 @@ from . import main
 from ..request import get_forecast
 
 # Views
+@main.route('/')
+def index():
+  '''
+  view root page function that returns the home page
+  and its data
+  '''
+  return render_template('index.html')
 
 
 @main.route('/home')
-def index():
+def home():
     '''
-    view root page function that returns the index page
+    view root page function that returns the home page
     and its data
     '''
     
