@@ -1,7 +1,7 @@
 from flask import render_template
 
 from . import main
-from ..request import get_current_forecast, get_daily_forecast
+from ..request import get_current_forecast, get_daily_forecast, get_city_name
 
 # Views
 
@@ -14,8 +14,11 @@ def index():
     '''
     
     title = 'Home'
+    
     ksm_current = get_current_forecast(-0.1022, 34.7617)
     ksm_daily_results = get_daily_forecast(-0.1022, 34.7617)
+    city_name = get_city_name(-0.1022, 34.7617)
+    
     
 
     msa_current = get_current_forecast(-4.0547, 39.6636)
@@ -45,5 +48,6 @@ def index():
     current_cities=[ksm_current, malindi_current, homabay_current, kilifi_current, bondo_current, turkana_current, busia_current, msa_current, lamu_current]
     daily_cities=[ksm_daily_results, malindi_daily_results, homabay_daily_results, kilifi_daily_results, bondo_daily_results, turkana_daily_results, busia_daily_results, msa_daily_results, lamu_daily_results]
     
-    return render_template('index.html', title=title, current_cities=current_cities, daily_cities=daily_cities)
+  
+    return render_template('index.html', title=title, current_cities=current_cities, daily_cities=daily_cities, city_name=city_name)
 

@@ -1,23 +1,20 @@
-import urllib.request, json
+import urllib.request
+import json
 from datetime import datetime
 
+from .models import Weather
 
-from .models import CurrentForecast, DailyForecast
+apiKey = None
+base_url = None
 
-
-# Getting api key
-apiKey=None
-
-# Getting the base url
-base_url=None
 
 def configure_request(app):
-  global apiKey, base_url
-  apiKey=app.config['WEATHER_API_KEY']
-  base_url=app.config['WEATHER_API_BASE_URL']
+    global apiKey, base_url
+    apiKey = app.config['WEATHER_API_KEY']
+    base_url = app.config['WEATHER_API_BASE_URL']
 
 
-def get_current_forecast(lat, lon):
+def get_forecast(lat, lon):
     '''
     Function that gets the json response to our url request
     '''
@@ -27,130 +24,91 @@ def get_current_forecast(lat, lon):
         get_forecast_data = url.read()
         get_forecast_response = json.loads(get_forecast_data)
 
-        current_forecast = None
-        
+        weather_object = None
 
-        if get_forecast_response['current']:
-            current_forecast_object = get_forecast_response['current']
-            current_forecast = process_current_results(current_forecast_object)
-           
+        if get_forecast_response:
+            lat = get_forecast_response.get('lat')
+            lon = get_forecast_response.get('lon')
 
-    return current_forecast
+            # City Names
+            if lat == -0.1022 and lon == 34.7617:
+                name = "Kisumu"
+            elif lat == -4.0547 and lon == 39.6636:
+                name = "Mombasa"
+            elif lat == -3.2175 and lon == 40.11911:
+                name = "Malindi"
+            elif lat == -0.5273 and lon == 34.4571:
+                name = "Homabay"
+            elif lat == -3.6305 and lon == 39.8499:
+                name = "Kilifi"
+            elif lat == -2.2717 and lon == 40.902:
+                name = "Lamu"
+            elif lat == 0.2386 and lon == 34.2694:
+                name = "Bondo"
+            elif lat == 3.5833 and lon == 36.1167:
+                name = "Turkana"
+            elif lat == 0.4601 and lon == 34.117:
+                name = "Busia"
 
-def process_current_results(current_forecast_object):
-    '''
-    Function that processes the current forecast result and 
-    transforms them to a list of Objects
+            # Current
+            current_timestamp = get_forecast_response['current'].get('dt')
+            current_temp = get_forecast_response['current'].get('temp')
+            current_feels_like = get_forecast_response['current'].get('feels_like')
+            current_pressure = get_forecast_response['current'].get('pressure')
+            current_humidity = get_forecast_response['current'].get('humidity')
+            current_clouds = get_forecast_response['current'].get('clouds')
+            current_visibility = get_forecast_response['current'].get('visibility')
+            current_wind_speed = get_forecast_response['current'].get('wind_speed')
+            current_wind_deg = get_forecast_response['current'].get('wind_deg')
+            current_weather_id = get_forecast_response['current']['weather'][0].get('id')
+            current_weather_main = get_forecast_response['current']['weather'][0].get('main')
+            current_weather_description = get_forecast_response['current']['weather'][0].get('description')
+            current_weather_icon = get_forecast_response['current']['weather'][0].get('icon')
 
-    Args:
-      current_forecast_list: A list of dictionaries that contain current 
-      details
+            # Daily
+            daily_timestamp = get_forecast_response['daily'].get('dt')
+            daily_day_temp = get_forecast_response['daily']['temp'].get('day')
+            daily_night_temp = get_forecast_response['daily']['temp'].get('night')
+            daily_min_temp = get_forecast_response['daily']['temp'].get('min')
+            daily_max_temp = get_forecast_response['daily']['temp'].get('max')
+            daily_eve_temp = get_forecast_response['daily']['temp'].get('eve')
+            daily_morn_temp = get_forecast_response['daily']['temp'].get('morn')
+            daily_pressure = get_forecast_response['daily'].get('pressure')
+            daily_humidity = get_forecast_response['daily'].get('humidity')
+            daily_wind_speed = get_forecast_response['daily'].get('wind_speed')
+            daily_wind_deg = get_forecast_response['daily'].get('wind_deg')
+            daily_pop = get_forecast_response['daily'].get('pop')
+            daily_rain = get_forecast_response['daily'].get('rain')
+            daily_clouds = get_forecast_response['daily'].get('clouds')
+            daily_weather_id = get_forecast_response['daily']['weather'][0].get('id')
+            daily_weather_main = get_forecast_response['daily']['weather'][0].get('main')
+            daily_weather_description = get_forecast_response['daily']['weather'][0].get('description')
+            daily_weather_icon = get_forecast_response['daily']['weather'][0].get('icon')
 
-    Returns:
-      forecast_results_current: A list of current forecast objects
-    '''
-    
+            # Get current Time
+            current_time = datetime.utcfromtimestamp(
+                current_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
+            # Get Daily Prediction Time
+            daily_time = datetime.utcfromtimestamp(
+                daily_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
 
-    if current_forecast_object:
+            # Get current Status
+            if current_weather_main == 'Clouds' or current_weather_description == 'light rain' or current_weather_description == 'overcast clouds':
+                current_status = "go fish"
+            else:
+                current_status = "Not the best weather, better do something else with your time"
 
-        timestamp = current_forecast_object.get('dt')
-        temp = current_forecast_object.get('temp')
-        feels_like = current_forecast_object.get('feels_like')
-        pressure = current_forecast_object.get('pressure')
-        humidity = current_forecast_object.get('humidity')
-        clouds = current_forecast_object.get('clouds')
-        visibility = current_forecast_object.get('visibility')
-        wind_speed = current_forecast_object.get('wind_speed')
-        wind_deg = current_forecast_object.get('wind_deg')
-        weather_id = current_forecast_object['weather'][0].get('id')
-        weather_main = current_forecast_object['weather'][0].get('main')
-        weather_description = current_forecast_object['weather'][0].get('description')
-        weather_icon = current_forecast_object['weather'][0].get('icon')
-        
-        if weather_main == 'Clouds' or weather_description == 'light rain' or weather_description == 'overcast clouds':
-          status="go fish"
-        else:
-          status="Not the best weather, better do something else with your time"
-          
-       
-        time= datetime.utcfromtimestamp(timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
-        
-        current_forecast = CurrentForecast(time, temp, feels_like, pressure, humidity, clouds,
-                                                  visibility, wind_speed, wind_deg, weather_id, weather_main,
-                                                  weather_description, weather_icon, status=status)
+            # Get Daily Status
+            if daily_weather_main == 'Clouds' or daily_weather_description == 'light rain' or daily_weather_description == 'overcast clouds':
+                daily_status = "go fish"
+            else:
+                daily_status = "Not the best weather, better do something else with your time"
 
-        print(status)
-    
-    return current_forecast
+            weather_object = Weather(name, current_time, current_temp, current_feels_like, current_pressure, current_humidity,
+                                     current_clouds, current_visibility, current_wind_speed, current_wind_deg, current_weather_id, current_weather_main,
+                                     current_weather_description, current_weather_icon, current_status, daily_time, daily_day_temp, daily_night_temp,
+                                     daily_min_temp, daily_max_temp, daily_eve_temp, daily_morn_temp, daily_pressure, daily_humidity, daily_wind_speed,
+                                     daily_wind_deg, daily_weather_id, daily_weather_main, daily_weather_description, daily_weather_icon, daily_clouds,
+                                     daily_pop, daily_rain, daily_status)
 
-
-def get_daily_forecast(lat, lon):
-    '''
-    Function that gets the json response to our url request
-    '''
-    get_forecast_url = base_url.format(lat, lon, apiKey)
-
-    with urllib.request.urlopen(get_forecast_url) as url:
-        get_forecast_data = url.read()
-        get_forecast_response = json.loads(get_forecast_data)
-
-        if get_forecast_response['daily']:
-            daily_forecast_list = get_forecast_response['daily']
-            forecast_results_daily = process_daily_results(daily_forecast_list)
-
-    return  forecast_results_daily
-
-
-def process_daily_results(daily_forecast_list):
-    '''
-    Function that processes the daily forecast result and 
-    transforms them to a list of Objects
-
-    Args:
-      daily_forecast_list: A list of dictionaries that contain daily 
-      details
-
-    Returns:
-      forecast_results_daily: A list of daily forecast objects
-    '''
-    forecast_results_daily = []
-
-    for daily_result in daily_forecast_list:
-
-        timestamp = daily_result.get('dt')
-        day_temp = daily_result['temp'].get('day')
-        night_temp = daily_result['temp'].get('night')
-        min_temp = daily_result['temp'].get('min')
-        max_temp = daily_result['temp'].get('max')
-        eve_temp = daily_result['temp'].get('eve')
-        morn_temp = daily_result['temp'].get('morn')
-        pressure = daily_result.get('pressure')
-        humidity = daily_result.get('humidity')
-        wind_speed = daily_result.get('wind_speed')
-        wind_deg = daily_result.get('wind_deg')
-        pop = daily_result.get('pop')
-        rain = daily_result.get('rain')
-        clouds = daily_result.get('clouds')
-        weather_id = daily_result['weather'][0].get('id')
-        weather_main = daily_result['weather'][0].get('main')
-        weather_description = daily_result['weather'][0].get('description')
-        weather_icon = daily_result['weather'][0].get('icon')
-
-        if weather_main == 'Clouds' or weather_description == 'light rain' or weather_description == 'overcast clouds':
-          status="go fish"
-        else:
-          status="Not the best weather, better do something else with your time"
-          
-        
-        time= datetime.utcfromtimestamp(timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z UTC')
-        
-        
-        daily_forecast_object = DailyForecast(time, day_temp,
-                                              night_temp, min_temp, max_temp, eve_temp, morn_temp,
-                                              pressure, humidity, wind_speed, wind_deg,
-                                              weather_id, weather_main, weather_description,
-                                              weather_icon, clouds, pop, rain, status)
-
-        forecast_results_daily.append(daily_forecast_object)
-   
-    return forecast_results_daily
+    return weather_object
