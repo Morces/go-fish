@@ -1,0 +1,21 @@
+{% macro displayCurrentCityWeather(cities) %}
+
+{% for city in cities %}
+
+
+<h5><b><em>STATUS: </em></b>{{city.status}}</h5>
+<p><b>time</b>: {{city.time}}</p>
+<p><b>temp</b>: {{city.temp}}</p>
+<p><b>feels_like</b>: {{city.feels_like}}</p>
+<p><b>pressure</b>: {{city.pressure}}</p>
+<p><b>humidity</b>: {{city.humidity}}</p>
+<p><b>clouds</b>: {{city.clouds}}</p>
+<p><b>visibility</b>: {{city.visibility}}</p>
+<p><b>wind_speed</b>: {{city.wind_speed}}</p>
+<p><b>wind_deg</b>: {{city.wind_deg}}</p>
+<p><b>weather_id</b>: {{city.weather_id}}</p>
+<p><b>weather_main</b>: {{city.weather_main}}</p>
+<p><b>weather_description</b>: {{city.weather_description}}</p>
+<p><b>weather_icon</b>: {{city.weather_icon}}</p>
+{% endfor %}
+{% endmacro %}

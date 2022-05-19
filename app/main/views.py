@@ -12,6 +12,7 @@ def index():
     view root page function that returns the index page
     and its data
     '''
+    
     title = 'Home'
     ksm_current = get_current_forecast(-0.1022, 34.7617)
     ksm_daily_results = get_daily_forecast(-0.1022, 34.7617)
@@ -40,9 +41,9 @@ def index():
 
     busia_current = get_current_forecast(0.4601, 34.117)
     busia_daily_results = get_daily_forecast(0.4601, 34.117)
-
-    return render_template('index.html', title=title, ksm_current=ksm_current, ksm_daily_results=ksm_daily_results, msa_current=msa_current, msa_daily_results=msa_daily_results,
-    malindi_current=malindi_current, malindi_daily_results=malindi_daily_results, homabay_current=homabay_current, homabay_daily_results=homabay_daily_results,
-     kilifi_current=kilifi_current, kilifi_daily_results=kilifi_daily_results, lamu_current=lamu_current, lamu_daily_results=lamu_daily_results, busia_current=busia_current,
-     busia_daily_results=busia_daily_results, bondo_current=bondo_current, bondo_daily_results=bondo_daily_results, turkana_current=turkana_current, turkana_daily_results=turkana_daily_results)
+    
+    current_cities=[ksm_current, malindi_current, homabay_current, kilifi_current, bondo_current, turkana_current, busia_current, msa_current, lamu_current]
+    daily_cities=[ksm_daily_results, malindi_daily_results, homabay_daily_results, kilifi_daily_results, bondo_daily_results, turkana_daily_results, busia_daily_results, msa_daily_results, lamu_daily_results]
+    
+    return render_template('index.html', title=title, current_cities=current_cities, daily_cities=daily_cities)
 

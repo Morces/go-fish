@@ -6,7 +6,6 @@ from .models import CurrentForecast, DailyForecast
 
 
 # Getting api key
-# appid = app.config['WEATHER_API_KEY'] 
 apiKey=None
 
 # Getting the base url
@@ -16,8 +15,6 @@ def configure_request(app):
   global apiKey, base_url
   apiKey=app.config['WEATHER_API_KEY']
   base_url=app.config['WEATHER_API_BASE_URL']
-
-
 
 
 def get_current_forecast(lat, lon):
