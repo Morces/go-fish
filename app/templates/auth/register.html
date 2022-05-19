@@ -1,12 +1,17 @@
 {% extends 'base.html'%}
 {% block content%}
-<body>
-    <div class="container">
+<div class="auth">
+    <div class="container" style="width: 30%; margin: auto; margin-top: 6%;padding: 50px 35px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 1px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px); height: 70vh;">
         <div class="content-section">
             <form method="POST" action="">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Join Today</legend>
+                    <legend class="border-bottom mb-4 text-center">Join Today</legend>
                     <div class="form-group">
                         {{ form.username.label(class="form-control-label") }}
     
@@ -21,6 +26,7 @@
                             {{ form.username(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    <br>
                     <div class="form-group">
                         {{ form.email.label(class="form-control-label") }}
                         {% if form.email.errors %}
@@ -34,6 +40,7 @@
                             {{ form.email(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    <br>
                     <div class="form-group">
                         {{ form.password.label(class="form-control-label") }}
                         {% if form.password.errors %}
@@ -47,6 +54,7 @@
                             {{ form.password(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    <br>
                     <div class="form-group">
                         {{ form.confirm_password.label(class="form-control-label") }}
                         {% if form.confirm_password.errors %}
@@ -60,17 +68,20 @@
                             {{ form.confirm_password(class="form-control form-control-lg") }}
                         {% endif %}
                     </div>
+                    <br>
                 </fieldset>
-                <div class="form-group">
-                    {{ form.submit(class="btn btn-outline-info") }}
+                <br>
+                <div class="form-group bg-warning" style="width: 100%; margin: auto; text-align: center;">
+                    {{ form.submit(class="btn btn-warning") }}
                 </div>
+                <br>
             </form>
         </div>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Already Have An Account? <a class="ml-2" href="{{ url_for('auth.login') }}">Sign In</a>
+                Already Have An Account? <a class="ml-2" style="text-decoration: none;" href="{{ url_for('auth.login') }}">Sign In</a>
             </small>
         </div>
     </div>
-</body>
+</div class="auth" style="background-color: F8F3F3;">
 {% endblock %}
