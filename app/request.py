@@ -1,5 +1,6 @@
 import urllib.request, json
 from datetime import datetime
+import time
 
 from .models import CurrentWeather, DailyForecast, HourlyForecast
 
@@ -25,6 +26,7 @@ def get_current_forecast(lat, lon):
             lon = get_forecast_response.get('lon')
 
             # Current
+            current_offset = get_forecast_response.get('timezone_offset')
             current_timestamp = get_forecast_response['current'].get('dt')
             current_temp = get_forecast_response['current'].get('temp')
             current_feels_like = get_forecast_response['current'].get('feels_like')
@@ -40,7 +42,8 @@ def get_current_forecast(lat, lon):
             current_weather_icon = get_forecast_response['current']['weather'][0].get('icon')
 
             # Get current Time
-            current_time = datetime.utcfromtimestamp(current_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z')
+            current_plus_offset =current_timestamp + current_offset
+            current_time = datetime.utcfromtimestamp(current_plus_offset).strftime('%A %d %B, %Y %I:%M:%S %Z')
              # Get current Status
             if current_weather_main == 'Clouds' or current_weather_description == 'light rain' or current_weather_description == 'overcast clouds' or current_weather_description == 'clear sky':
                 current_status = "go fish"
@@ -96,6 +99,7 @@ def get_hourly_forecast(lat, lon):
             lat = get_forecast_response.get('lat')
             lon = get_forecast_response.get('lon')
             hourly_timestamp = hourly_response.get('dt')
+            hourly_offset = get_forecast_response.get('timezone_offset')
             hourly_temp = hourly_response.get('temp')
             hourly_feels_like= hourly_response.get('temp')
             hourly_pressure = hourly_response.get('pressure')
@@ -131,8 +135,12 @@ def get_hourly_forecast(lat, lon):
                  name = "Busia"
             
 
-            # Get hourly Prediction Time
-            hourly_time = datetime.utcfromtimestamp(hourly_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z')
+            # Get hourly Prediction Time\
+
+
+
+            hourly_plus_offset =hourly_timestamp + hourly_offset
+            hourly_time = datetime.utcfromtimestamp(hourly_plus_offset).strftime('%A %d %B, %Y %I:%M:%S %Z')
 
             # Get Daily Status
             if hourly_weather_main == 'Clouds' or hourly_weather_description == 'light rain' or hourly_weather_description == 'overcast clouds' or hourly_weather_description == 'clear sky':
@@ -147,6 +155,7 @@ def get_hourly_forecast(lat, lon):
 
             hourly_results.append(hourly_object)
     print(f'hourly {name}')
+    print(f'hourly {hourly_time}')
     return hourly_results
 
 
@@ -164,6 +173,7 @@ def get_daily_forecast(lat, lon):
             lat = get_forecast_response.get('lat')
             lon = get_forecast_response.get('lon')
             daily_timestamp = response.get('dt')
+            daily_offset = get_forecast_response.get('timezone_offset')
             daily_day_temp = response['temp'].get('day')
             daily_night_temp = response['temp'].get('night')
             daily_min_temp = response['temp'].get('min')
@@ -207,7 +217,8 @@ def get_daily_forecast(lat, lon):
             
 
                 # Get Daily Prediction Time
-            daily_time = datetime.utcfromtimestamp(daily_timestamp).strftime('%A %d %B, %Y %I:%M:%S %Z')
+            daily_plus_offset =daily_timestamp + daily_offset
+            daily_time = datetime.utcfromtimestamp(daily_plus_offset).strftime('%A %d %B, %Y %I:%M:%S %Z')
 
             
 
