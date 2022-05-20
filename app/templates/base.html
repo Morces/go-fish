@@ -18,10 +18,20 @@
     {% endblock %}
 </head>
 <body>
-
+    <style>
+        nav{
+            font-family:  sans-serif ;
+            height: 10vh;
+            overflow-y: hidden;
+            
+        }
+        .container, .container-fluid{
+            font-family: sans-serif;
+        }
+    </style>
     
     {% block navbar %}
-    <nav class="navbar navbar-expand-lg navbar-light" style="height: 10vh;">
+    <nav class="navbar navbar-expand-lg navbar-light" style="font-family: sans-serif; font-size: 20px; background-color: transparent;" >
         <div class="container-fluid">
 
             <a href="/" class="navbar-brand">
@@ -43,7 +53,7 @@
                         <a class="nav-link px-5" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link px-5" href="{{url_for('main.home')}}">Go Fish</a>
+                        <a class="nav-link px-5" href="{{url_for('main.gofish')}}">Go Fish</a>
                     </li>
 
                     {% if current_user.is_authenticated %}

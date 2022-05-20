@@ -1,10 +1,25 @@
 {% macro displayWeather(current_cities) %}
 
 <!--Current predictions-->
+<div class="styles">
+  <style>
+    .card-body, .card-header{
+      border-radius: 1px;
+      background-color: #2F5ED9;
+      /* border: 1px solid rgba(255, 255, 255, 0.3); */
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      backdrop-filter: blur(5px); 
+      font-family: sans-serif;
+      float: left;
+      color: white;
+    }
+  </style>
 
 <div class="row">
+  
   {% for city in current_cities %}
   <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 current-card mb-4">
+
     <div class="card-header">
       <div class="row text-center">
         <h4>{{city.name}}</h4>
@@ -99,4 +114,7 @@
   </div>
   {% endfor %}
 </div>
+
+</div>
+
 {% endmacro %}

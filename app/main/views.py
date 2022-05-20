@@ -14,9 +14,9 @@ def index():
   return render_template('index.html')
 
 
-@main.route('/home')
+@main.route('/gofish')
 # @login_required
-def home():
+def gofish():
     '''
     view root page function that returns the home page
     and its data
