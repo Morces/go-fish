@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% block styles%}
+   <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
+{% endblock %}
+
+{% block content%}
+<body>
+<style>
+
+#about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.bubbles img {
+    width: 50px;
+    animation: bubble 7s linear infinite;
+}
+
+.bubbles {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    bottom: -70px;
+}
+
+@keyframes bubble {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-80vh);
+        opacity: 0;
+    }
+}
+
+.bubbles img:nth-child(1) {
+    animation-delay: 2s;
+}
+
+.bubbles img:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.bubbles img:nth-child(3) {
+    animation-delay: 3s;
+}
+
+.bubbles img:nth-child(4) {
+    animation-delay: 4.5s;
+}
+
+.bubbles img:nth-child(5) {
+    animation-delay: 3s;
+}
+
+.bubbles img:nth-child(6) {
+    animation-delay: 6s;
+}
+
+.bubbles img:nth-child(7) {
+    animation-delay: 7s;
+}
+
+.bubbles img:nth-child(8) {
+    animation-delay: 7.5s;
+}
+</style>
+    <div class="container-fluid" style="margin: 0;
+    padding: 0;
+    overflow-x: hidden;font-family: 'Poppins' sans-serif;">
+        <div class="start" style="margin-top: 0;">
+            <div class="row fun">
+                <div class="col-md-6 head1">
+                    <h1 class="text-white" style="font-size: 60px; margin-top: 10%;; margin-left: 5%;">
+                        Get the most fun <br> weather app 
+                    </h1>
+                    <br><br><br>
+                    <a href="{{url_for('auth.login')}}">
+                        <button class="btn" 
+                            style="background-color: #2F5ED9; color: white;margin-left: 5%;">Get Started
+                        </button></a>
+                </div>
+                <div class="col-md-6">
+                    <img src="static/img/phone.png" alt=""  class="img-responsive" style="margin-left: 25%;">
+                </div>
+            </div>
+        </div>
+        
+        <div class="bubbles">
+            <img class="" src="static/img/sunny.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+            <img class="" src="static/img/rainnyy.png" alt="">
+            <img class="" src="static/img/9deg.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+            <img class="" src="static/img/sunny.png" alt="">
+            <img class="" src="static/img/9deg.png" alt="">
+            <img class="" src="static/img/rain.png" alt="">
+        </div>
+        <div class="report" style="display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin: auto;
+        margin-top: -5%;">
+            <img src="static/img/Screenshot from 2022-05-18 16-07-56.png" alt="">
+            <!-- <img src="static/img/Screenshot from 2022-05-18 16-07-56.png" alt=""> -->
+        </div>
+        <br><br>
+        <div class="container">
+            <h2 class="text-center">About</h2>
+            <div id="about">
+                <div class="info">
+                    <br><br><br>
+                    <h2 style="font-weight: bold;">Get comprehensive <br> Weather Information</h2>
+                    <br><br>
+                    Sign Up with us and get the chance to protect your <br>
+                    loved ones from any bad weather, remember, better be <br>
+                    careful than sorry!! 
+                </div>
+                <div class="combined">
+                    <img src="static/img/combined.png" alt="">
+                </div>
+            </div>
+            <div id="about" style="display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 5%;">
+                <div class="info">
+                    <br><br>
+                    <h2 style="font-weight: bold;">Know when it's safe <br> for you to go fishing</h2>
+                    <br><br>
+                    Your life is more important than your business 
+                    Always keep up <br>with the weather before you decide to go  
+                    in the water <br>and risk your life 
+                </div>
+                <div class="fish">
+                    <img src="static/img/download.jpeg" alt="" height="350">
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row show" style="margin-top: 5%; display: flex;" >
+                <div class="col-lg-3 one">
+                  <img src="static/img/fishing.jpeg"  style="width:100%;flex: 25%;
+                  padding: 5px; margin-top: 20%;">
+                </div>
+                <div class="col-lg-3 one">
+                  <img src="static/img/men.jpeg"  style="width:100%; flex: 25%;
+                  padding: 5px;" height="400">
+                </div>
+                <div class="col-lg-3 one">
+                  <img src="static/img/gofish.jpeg"  style="width:100%;flex: 25%;
+                  padding: 5px;" height="400">
+                </div>
+                <div class="col-lg-3 one">
+                    <img src="static/img/women.jpeg"  style="width:100%;flex: 25%;
+                    padding: 5px; margin-top: 20%;" >
+                </div>
+            </div>
+            <div id="contact" style="margin-top: 6%; width: 100%; background-color: #7A9CF3;">
+                <br><br>
+                <h3 class="text-center">Contact Us</h3>
+                <form action="" style="width: 70%; margin:auto;">
+                    <div class="input" style="display: flex; justify-content: space-between;">
+                        <label for="name">NAME 
+                            <input type="text" class="form-control" style="width: 450px;">
+                        </label>
+                        <label for="email">EMAIL
+                            <input type="text" class="form-control" style="width: 500px;">
+                        </label><br>
+                    </div>
+                    <br>
+                    <label for="message">MESSAGE
+                        <textarea name="message" class="form-control" style="width: 1090px; height: 20vh;"></textarea>
+                    </label><br><br>
+                    <button class="btn submit" style="background-color: #ffc400; width: 30%; margin: auto; margin-left: 35%;">SUBMIT</button>
+                    <br><br>
+                </form>
+            </div>
+        </div>
+        <br>
+        <footer>
+            <p class="text-center">&copy; Copyright 2022. All rights reserved</p>
+        </footer>
+    </div>
+    
+
+    <!-- js bundle with popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+
+{% endblock %}
