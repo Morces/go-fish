@@ -225,7 +225,7 @@ def get_daily_forecast(lat, lon):
             
                 # Get Daily Status
             if daily_weather_main == 'Clouds' or daily_weather_description == 'light rain' or daily_weather_description == 'overcast clouds' or daily_weather_description == 'clear sky':
-                daily_status = "go fish"
+                daily_status = "go fish" 
             else:
                 daily_status = "Not the best weather, better do something else with your time"
 

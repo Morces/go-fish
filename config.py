@@ -7,7 +7,7 @@ class Config:
   WEATHER_API_BASE_URL='https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&exclude=minutely&lang=en&units=metric&appid={}'
   WEATHER_API_KEY=os.environ.get('WEATHER_API_KEY')
   SECRET_KEY = '8DH89s8ej3'
-  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wachira:Lydiah007@localhost/gofish'
+  SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://flo:flo@localhost:5433/go_fishing'
   UPLOADED_PHOTOS_DEST ='app/static/photos'
 
   MAIL_SERVER = 'smtp.googlemail.com'
@@ -24,7 +24,7 @@ class ProdConfig(Config):
     Config: The parent configuration class with General
     configuration settings
   '''
-  pass
+  SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL").replace("://", "ql://", 1) 
 
 class DevConfig(Config):
   '''
