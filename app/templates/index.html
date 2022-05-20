@@ -6,7 +6,15 @@
 {% block content%}
 <body>
 <style>
-    .bubbles img {
+
+#about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.bubbles img {
     width: 50px;
     animation: bubble 7s linear infinite;
 }
@@ -17,7 +25,7 @@
     align-items: center;
     justify-content: space-around;
     position: absolute;
-    bottom: -30px;
+    bottom: -70px;
 }
 
 @keyframes bubble {
@@ -35,7 +43,7 @@
     }
 
     100% {
-        transform: translateY(-50vh);
+        transform: translateY(-80vh);
         opacity: 0;
     }
 }
@@ -72,7 +80,7 @@
     animation-delay: 7.5s;
 }
 </style>
-<div class="container-fluid" style="margin: 0;
+    <div class="container-fluid" style="margin: 0;
     padding: 0;
     overflow-x: hidden;font-family: 'Poppins' sans-serif;">
         <div class="start" style="margin-top: 0;">
