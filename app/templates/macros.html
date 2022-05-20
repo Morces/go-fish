@@ -1,8 +1,25 @@
-{% macro displayWeather(cities) %}
+{% macro displayWeather(current_cities) %}
 
-{% for city in cities %}
+<!--Current predictions-->
+<div class="styles">
+  <style>
+    .card-body, .card-header{
+      border-radius: 1px;
+      background-color: #2F5ED9;
+      /* border: 1px solid rgba(255, 255, 255, 0.3); */
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      backdrop-filter: blur(5px); 
+      font-family: sans-serif;
+      float: left;
+      color: white;
+    }
+  </style>
+
 <div class="row">
-  <div class="col-md-6 col-lg-6 col-sm-6 col-sm-6 card mb-4 current-card">
+  
+  {% for city in current_cities %}
+  <div class="col-md-3 col-lg-3 col-sm-3 col-xs-6 current-card mb-4">
+
     <div class="card-header">
       <div class="row text-center">
         <h4>{{city.name}}</h4>
@@ -26,9 +43,78 @@
       </div>
     </div>
   </div>
+  {% endfor %}
+</div>
 
-  
-{% endfor %}
+
 {% endmacro %}
 
 
+{% macro displayHourlyWeather(hourly_city) %}
+
+<!--hourly predictions-->
+<div class="row">
+  {% for hourly_result in hourly_city %}
+  <div class="col-md-4 col-lg-4 col-sm-6 col-sm-6 card mb-4 hourly-card">
+    <div class="card-header">
+      <div class="row text-center">
+        <h4>{{hourly_result.name}}</h4>
+        <p>{{hourly_result.hourly_time}}</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://openweathermap.org/img/wn/{{hourly_result.hourly_weather_icon}}@2x.png" alt="">
+            <p>{{hourly_result.hourly_weather_description}}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="temp-font">{{hourly_result.hourly_temp}} &#8451;</p>
+            <p>Feels like <span class="feels-like">{{hourly_result.hourly_feels_like}} &#8451;</span></p>
+          </div>
+        </div>
+        <div class="card-body">
+          <i class="bi bi-thermometer"></i>
+          <p>Feels like: {{hourly_result.hourly_pressure}} hPa</p>
+          <p>Pressure: {{hourly_result.hourly_pressure}} hPa</p>
+          <p class="temp-font">Status: {{hourly_result.hourly_status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}
+
+{% macro displayDailyWeather(daily_city) %}
+
+<!--hourly predictions-->
+<div class="row">
+  {% for daily_result in daily_city %}
+  <div class="col-md-4 col-lg-4 col-sm-6 col-sm-6 card mb-4 hourly-card">
+    <div class="card-header">
+      <div class="row text-center">
+        <h4>{{daily_result.name}}</h4>
+        <p>{{daily_result.daily_time}}</p>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="http://openweathermap.org/img/wn/{{daily_result.daily_weather_icon}}@2x.png" alt="">
+            <p>{{daily_result.daily_weather_description}}</p>
+          </div>
+          <div class="col-md-6">
+            <p class="temp-font">{{daily_result.daily_temp}} &#8451;</p>
+            <p>Feels like <span class="feels-like">{{daily_result.daily_feels_like}} &#8451;</span></p>
+          </div>
+        </div>
+        <div class="card-body">
+          <i class="bi bi-thermometer"></i>
+          <p>Feels like: {{daily_result.daily_pressure}} hPa</p>
+          <p>Pressure: {{daily_result.daily_pressure}} hPa</p>
+          <p class="temp-font">Status: {{daily_result.daily_status}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+</div>
+
+{% endmacro %}

@@ -25,7 +25,7 @@ To get the code..
 
 1. Cloning the repository:
   ```bash
-https://github.com/aust1inn/aust1inn_posts.git
+https://github.com/Morces/go-fish.git
 ```
 2. Move to the folder and install requirements
   ```bash
@@ -49,12 +49,15 @@ Open the application on your browser `127.0.0.1:5000`.
 
 ## Technology used
 
-* [Python3.8](https://www.python.org/)
+* [Python3](https://www.python.org/)
 * [Flask](http://flask.pocoo.org/)
 * [Heroku](https://heroku.com)
+* HTML
+* CSS
+* JavaScript
 
 ## Known Bugs
-* There are no known bugs currently but pull requests are allowed incase you spot a bug
+* There are no known bugs currently but pull requests are allowed incase you spot a bug.
 
 ## Contact Information 
 
@@ -63,3 +66,4 @@ If you have any question or contributions, please email me at [austinotieno364@g
 ## License
 * *MIT License:*
 * Copyright (c) 2022 **Moses Karani**
+
