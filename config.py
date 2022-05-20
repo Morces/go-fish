@@ -4,7 +4,7 @@ class Config:
   '''
   General configuration parent class
   '''
-  WEATHER_API_BASE_URL='https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&exclude=minutely,hourly&lang=en&units=metric&appid={}'
+  WEATHER_API_BASE_URL='https://api.openweathermap.org/data/2.5/onecall?lat={}&lon={}&exclude=minutely&lang=en&units=metric&appid={}'
   WEATHER_API_KEY=os.environ.get('WEATHER_API_KEY')
   SECRET_KEY = '8DH89s8ej3'
   SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wachira:Lydiah007@localhost/gofish'
