@@ -11,13 +11,7 @@
     /* height: 60vh; */
 }
 
-<<<<<<< HEAD
-=======
-/* .head1 {
-    margin-top: 5%;
-} */
 
->>>>>>> 4c8dfcde4ee013539a57c74e493532c6c20627c5
 .bubbles img {
     width: 50px;
     animation: bubble 7s linear infinite;
@@ -84,15 +78,14 @@
     animation-delay: 7.5s;
 }
 
-<<<<<<< HEAD
+
 .report {
     width: 60%;
-=======
+}
 .report{
     display: flex;
     justify-content: space-around;
     width: 100%;
->>>>>>> 4c8dfcde4ee013539a57c74e493532c6c20627c5
     margin: auto;
     margin-top: -5%;
 }
@@ -113,7 +106,7 @@
     padding: 5px;
 }
 
-<<<<<<< HEAD
+
 body {
     margin-left: auto;
     margin-right: auto;
@@ -135,5 +128,4 @@ body {
 .feels-like {
     font-size: 1.5em;
 }
-=======
->>>>>>> 4c8dfcde4ee013539a57c74e493532c6c20627c5
+
